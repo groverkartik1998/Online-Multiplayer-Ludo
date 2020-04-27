@@ -1,8 +1,9 @@
+var name = profile.getName();
 function onSignIn(googleUser) {
     var profile = googleUser.getBasicProfile();
-    console.log(profile);
     $("g-signin2").css("display", "none");
     $(".data").css("display", "block");
+    return name;
 }
 
 function signOut() {
@@ -90,3 +91,7 @@ $(document).ready(function () {
         if (valid) window.location.href = baseUrl + "lobby";
     });
 });
+function callme(){
+
+    return name;
+    }
