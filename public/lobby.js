@@ -157,9 +157,13 @@ function updateReadyButton() {
     }
 }
 
-function logout() {
+function signOut() {
     localStorage.token = undefined;
     window.location.href = baseUrl;
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+        console.log('User signed out.');
+    });
 }
 
 $(document).ready(function () {
@@ -180,7 +184,7 @@ $(document).ready(function () {
     });
 
     $("#logoutBtn").click(function () {
-        logout();
+        signOut();
     });
 
     sendActiveSignal();
