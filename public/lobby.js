@@ -166,6 +166,12 @@ function signOut() {
     window.location.href = baseUrl;
 }
 
+function onLoad() {
+    gapi.load('auth2', function() {
+    gapi.auth2.init();
+    });
+}
+
 $(document).ready(function () {
     updateLobby();
 
