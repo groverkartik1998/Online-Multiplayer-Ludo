@@ -92,6 +92,6 @@ $(document).ready(function () {
     });
 });
 function callme(){
-
-    return name;
+    var inputF = document.getElementById("playerName");
+    inputF.value = name; 
     }
