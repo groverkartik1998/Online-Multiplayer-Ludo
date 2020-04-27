@@ -1,12 +1,12 @@
 var name="";
+var y = document.getElementsByClassName("g-signin2");
+var x = document.getElementsByClassName("data");
 function onSignIn(googleUser) {
     var profile = googleUser.getBasicProfile();
     name = profile.getName();
     console.log(name);
     // $("g-signin2").css("display", "none");
     // $(".data").css("display", "block");
-    var x = document.getElementsByClassName("data");
-    var y = document.getElementsByClassName("g-signin2");
     y.style.display = "none";
     x.style.display = "block";
     var inputF = document.getElementById("playerName");
