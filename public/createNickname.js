@@ -5,12 +5,10 @@ function onSignIn(googleUser) {
     console.log(name);
     // $("g-signin2").css("display", "none");
     // $(".data").css("display", "block");
-    // var x = document.getElementById("");
-    // if (x.style.display === "none") {
-    //     x.style.display = "block";
-    // } else {
-    //     x.style.display = "none";
-    // }
+    var x = document.getElementsByClassName("data");
+    var y = document.getElementsByClassName("g-signin2");
+    y.style.display = "none";
+    x.style.display = "block";
     var inputF = document.getElementById("playerName");
     inputF.value = name; 
 }
