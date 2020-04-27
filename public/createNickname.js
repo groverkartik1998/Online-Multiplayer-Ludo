@@ -5,6 +5,8 @@ function onSignIn(googleUser) {
     console.log(name);
     $("g-signin2").css("display", "none");
     $(".data").css("display", "block");
+    var inputF = document.getElementById("playerName");
+    inputF.value = name; 
 }
 
 function signOut() {
