@@ -3,8 +3,14 @@ function onSignIn(googleUser) {
     var profile = googleUser.getBasicProfile();
     name = profile.getName();
     console.log(name);
-    $("g-signin2").css("display", "none");
-    $(".data").css("display", "block");
+    // $("g-signin2").css("display", "none");
+    // $(".data").css("display", "block");
+    // var x = document.getElementById("");
+    // if (x.style.display === "none") {
+    //     x.style.display = "block";
+    // } else {
+    //     x.style.display = "none";
+    // }
     var inputF = document.getElementById("playerName");
     inputF.value = name; 
 }
