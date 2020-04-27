@@ -3,7 +3,7 @@ function onSignIn(googleUser) {
     var profile = googleUser.getBasicProfile();
     name = profile.getName();
     console.log(name);
-    // $("g-signin2").css("display", "none");
+    $("g-signin2").css("display", "none");
     $(".data").css("display", "block");
     var inputF = document.getElementById("playerName");
     inputF.value = name; 
