@@ -94,9 +94,3 @@ $(document).ready(function () {
         if (valid) window.location.href = baseUrl + "lobby";
     });
 });
-function callme(){
-    console.log(name);
-    var inputF = document.getElementById("playerName");
-    inputF.value = name; 
-    console.log(inputF.value);
-    }
