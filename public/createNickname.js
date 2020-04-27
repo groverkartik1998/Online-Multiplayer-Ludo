@@ -1,4 +1,4 @@
-var name;
+var name="";
 function onSignIn(googleUser) {
     var profile = googleUser.getBasicProfile();
     name = profile.getName();
