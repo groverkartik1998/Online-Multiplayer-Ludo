@@ -1,9 +1,9 @@
-var name = profile.getName();
+var name;
 function onSignIn(googleUser) {
     var profile = googleUser.getBasicProfile();
+    name = profile.getName();
     $("g-signin2").css("display", "none");
     $(".data").css("display", "block");
-    return name;
 }
 
 function signOut() {
