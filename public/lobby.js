@@ -158,18 +158,13 @@ function updateReadyButton() {
 }
 
 function signOut() {
-    var auth2 = gapi.auth2.getAuthInstance();
-    auth2.signOut().then(function () {
-        console.log('User signed out.');
-    });
+    // var auth2 = gapi.auth2.getAuthInstance();
+    // auth2.signOut().then(function () {
+    //     console.log('User signed out.');
+    // });
+    document.location.href = "https://www.google.com/accounts/Logout?continue=https://niyuj-ludo-tournament.herokuapp.com";
     localStorage.token = undefined;
     window.location.href = baseUrl;
-}
-
-function onLoad() {
-    gapi.load('auth2', function() {
-    gapi.auth2.init();
-    });
 }
 
 $(document).ready(function () {
