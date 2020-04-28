@@ -2,21 +2,9 @@ var name="";
 function onSignIn(googleUser) {
     var profile = googleUser.getBasicProfile();
     name = profile.getName();
-    console.log(name);
-    // $("g-signin2").css("display", "none");
     $(".data").css("display", "block");
     var inputF = document.getElementById("playerName");
     inputF.value = name; 
-}
-
-function signOut() {
-    var auth2 = gapi.auth2.getAuthInstance();
-    auth2.signOut().then(function () {
-        console.log('User signed out.');
-    });
-    // document.location.href = "https://your-tenant-name.auth0.com/v2/logout?returnTo=https://niyuj-ludo-tournament.herokuapp.com&client_id=973648150358-6bbu9t9vndj8mgj4r13upktvhil61t1g.apps.googleusercontent.com";
-    // localStorage.token = undefined;
-    // window.location.href = baseUrl;
 }
 
 function validate() {
