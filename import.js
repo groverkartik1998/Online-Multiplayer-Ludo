@@ -132,7 +132,7 @@ module.exports = {
         let game = {};
         game.playerTurn = 0;
         game.turn = 0;
-        game.throwsLeft = 3;
+        game.throwsLeft = 1;
         game.waitingForMove = false;
         game.nextDice = dice();
         game.lastDice = 3;
@@ -162,7 +162,7 @@ module.exports = {
             for (let j = 0; j < 4; j++) {
                 game.players[i].chips[j] = {};
                 game.players[i].chips[j].pos = j + i * 4;
-                game.players[i].chips[j].distance = 0;
+                game.players[i].chips[j].distance = 0; 
                 game.players[i].chips[j].inAtTurn = -1;
             }
             game.players[i].stats = {};
@@ -374,7 +374,7 @@ function nextPlayer(game) {
 
         game.throwsLeft = 1;
 
-        if (notStartedChips + chipsFinished === 4) game.throwsLeft = 3;
+        if (notStartedChips + chipsFinished === 4) game.throwsLeft = 1;
 
     } else {
         nextPlayer(game);

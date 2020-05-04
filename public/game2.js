@@ -343,11 +343,11 @@ function getUrlVars() {
     return vars;
 }
 
-function autoPlay() {
-    setInterval(function () {
-        if (isTurn()) ludoAI();
-    }, 80);
-}
+// function autoPlay() {
+//     setInterval(function () {
+//         if (isTurn()) ludoAI();
+//     }, 80);
+// }
 
 function validateToken(next) {
     jQuery.ajax({
@@ -492,13 +492,13 @@ $(document).ready(function () {
         if (game.status != 1) game.timeLeftTurn = 0;
     }, 50);
 
-    $("#nextPlayer").click(function () {
-        for (let i = 0; i < 30; i++) ludoAI();
-    });
+    // $("#nextPlayer").click(function () {
+    //     for (let i = 0; i < 30; i++) ludoAI();
+    // });
 
-    $("#runGame").click(function () {
-        autoPlay();
-    });
+    // $("#runGame").click(function () {
+    //     autoPlay();
+    // });
 
     $("#diceBottom").click(function () {
         playerThrowDice();
