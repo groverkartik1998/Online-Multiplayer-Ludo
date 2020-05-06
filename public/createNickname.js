@@ -6,8 +6,8 @@ function onSignIn(googleUser) {
     var inputF = document.getElementById("playerName");
     inputF.value = name; 
     var provider = new firebase.auth.GoogleAuthProvider();
-    firebase.auth().signInWithPopup(provider).then(function(result) {
-        console.log(result);
+    firebase.auth().signInWithPopup(provider).then(function(data) {
+        console.log(data);
       }).catch(function(error) {
         
       });
