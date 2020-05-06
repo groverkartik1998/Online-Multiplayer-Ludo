@@ -20,8 +20,8 @@ module.exports = {
             for (let i = 0; i < 4; i++) {
                 if (game.players[game.playerTurn].chips[i].pos === pos && (
                     moveChipsIn === undefined ||
-                    (moveChipsIn && game.players[game.playerTurn].chips[i].distance === 53) ||
-                    (moveChipsIn === false && game.players[game.playerTurn].chips[i].distance !== 53))
+                    (moveChipsIn && game.players[game.playerTurn].chips[i].distance === 51) ||
+                    (moveChipsIn === false && game.players[game.playerTurn].chips[i].distance !== 51))
                 ) {
                     chipsOnPos.push(i);
                 }
@@ -32,8 +32,10 @@ module.exports = {
                 let chipLength = game.players[game.playerTurn].chips[chipsOnPos[0]].distance;
 
                 for (let i = 0; i < chipsToMove; i++) {
+                    console.log("in");
 
                     if (chipLength === game.players[game.playerTurn].chips[chipsOnPos[i]].distance) {
+                        console.log("pos" + pos);
 
                         if (pos < 16) {
 
@@ -47,16 +49,18 @@ module.exports = {
                             let newDistance = game.players[game.playerTurn].chips[chipsOnPos[i]].distance + game.lastDice
                             game.players[game.playerTurn].stats.totalDistance += game.lastDice;
                             game.players[game.playerTurn].stats.sumDistance += game.lastDice;
+                            console.log("newPos" + newPos);
+                            console.log("newDistance" + newDistance);
 
                             if (newPos > 67 && newPos < 74) {
                                 newPos += -52;
                             }
 
-                            if (newDistance > 53) {
-                                newPos = 14 + game.playerTurn * 6 + newDistance;
+                            if (newDistance > 51) {
+                                newPos = 16 + game.playerTurn * 6 + newDistance;
                             }
 
-                            if (newDistance === 59) {
+                            if (newDistance === 57) {
                                 game.players[game.playerTurn].chips[chipsOnPos[i]].inAtTurn = game.turn;
 
                             }
@@ -88,7 +92,7 @@ module.exports = {
             updatePosible(game);
 
             let allOnStart = true;
-            for (let i = 0; i < 4; i++) if (game.players[game.playerTurn].chips[i].distance > 0 && game.players[game.playerTurn].chips[i].distance !== 59) allOnStart = false;
+            for (let i = 0; i < 4; i++) if (game.players[game.playerTurn].chips[i].distance > 0 && game.players[game.playerTurn].chips[i].distance !== 57) allOnStart = false;
 
             game.throwsLeft--;
 
@@ -233,7 +237,7 @@ function checkWin(game) {
 
             if (!hasWon && game.players[j].status !== 1) {
                 game.players[game.playerTurn].status = 2;
-                game.winners.push(j);
+                // game.winners.push(j);
             }
         }
 
@@ -302,7 +306,7 @@ function knockoutOn(game, pos) {
             for (let j = 0; j < 4; j++) {
 
                 if (game.players[i].chips[j].pos === pos) {
-                    if (i === 0 && pos !== 16) {
+                    if (i === 0 && pos !== 16 && pos !== 63 && pos !== 50 && pos !== 37 && pos !== 24) {
                         game.players[i].chips[j].pos = j + i * 4;
                         game.players[i].chips[j].distance = 0;
                         game.players[game.playerTurn].stats.knockouts++;
@@ -310,7 +314,7 @@ function knockoutOn(game, pos) {
                         chipsKnockedOut++;
                         recalcSumDistance(game, i);
                     }
-                    if (i == 1 && pos != 29) {
+                    if (i == 1 && pos != 29 && pos !== 63 && pos !== 50 && pos !== 37 && pos !== 24) {
                         game.players[i].chips[j].pos = j + i * 4;
                         game.players[i].chips[j].distance = 0;
                         game.players[game.playerTurn].stats.knockouts++;
@@ -318,7 +322,7 @@ function knockoutOn(game, pos) {
                         chipsKnockedOut++;
                         recalcSumDistance(game, i);
                     }
-                    if (i == 2 && pos != 42) {
+                    if (i == 2 && pos != 42 && pos !== 63 && pos !== 50 && pos !== 37 && pos !== 24) {
                         game.players[i].chips[j].pos = j + i * 4;
                         game.players[i].chips[j].distance = 0;
                         game.players[game.playerTurn].stats.knockouts++;
@@ -326,7 +330,7 @@ function knockoutOn(game, pos) {
                         chipsKnockedOut++;
                         recalcSumDistance(game, i);
                     }
-                    if (i == 3 && pos != 55) {
+                    if (i == 3 && pos != 55 && pos !== 63 && pos !== 50 && pos !== 37 && pos !== 24) {
                         game.players[i].chips[j].pos = j + i * 4;
                         game.players[i].chips[j].distance = 0;
                         game.players[game.playerTurn].stats.knockouts++;
@@ -369,7 +373,7 @@ function nextPlayer(game) {
 
         for (let i = 0; i < 4; i++) {
             if (game.players[game.playerTurn].chips[i].distance === 0) notStartedChips++;
-            if (game.players[game.playerTurn].chips[i].distance === 59) chipsFinished++;
+            if (game.players[game.playerTurn].chips[i].distance === 57) chipsFinished++;
         }
 
         game.throwsLeft = 1;
@@ -397,7 +401,7 @@ function updatePosible(game) {
 
     for (let i = 0; i < 4; i++) {
 
-        if (game.players[game.playerTurn].chips[i].distance + game.nextDice > 59) ;
+        if (game.players[game.playerTurn].chips[i].distance + game.nextDice > 57) ;
         else if (game.players[game.playerTurn].chips[i].pos < 16 && game.nextDice === 6) game.posiblePos.push(game.players[game.playerTurn].chips[i].pos);
         else if (game.players[game.playerTurn].chips[i].pos >= 16) game.posiblePos.push(game.players[game.playerTurn].chips[i].pos);
 
@@ -414,8 +418,8 @@ function updatePosible(game) {
                     newPos += -52;
                 }
 
-                if (newDistance > 53) {
-                    newPos = 14 + game.playerTurn * 6 + newDistance
+                if (newDistance > 51) {
+                    newPos = 16 + game.playerTurn * 6 + newDistance
                 }
 
                 game.posiblePosDest.push(newPos);

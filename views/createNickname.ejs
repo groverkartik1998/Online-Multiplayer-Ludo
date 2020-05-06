@@ -4,6 +4,28 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-analytics.js"></script>
+
+    <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+        apiKey: "AIzaSyBmc6trhZ1kVVDK3oKAK94X0mBIFzqJVYM",
+        authDomain: "onlinemultiplayerludo.firebaseapp.com",
+        databaseURL: "https://onlinemultiplayerludo.firebaseio.com",
+        projectId: "onlinemultiplayerludo",
+        storageBucket: "onlinemultiplayerludo.appspot.com",
+        messagingSenderId: "503460778077",
+        appId: "1:503460778077:web:8282d443649cee28b4fdb4",
+        measurementId: "G-MSR17MS3JT"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    </script>   
     <script type="text/javascript" src="<%= baseUrl %>createNickname.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
             integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o"
@@ -27,7 +49,7 @@
 <body>
 <div class="container h-100">
     <div class="row h-100 justify-content-center align-items-center">
-         <div class="g-signin2" data-width="400" data-height="100" data-longtitle="true" onClick = "this.style.visibility='hidden';" data-onsuccess="onSignIn"></div>
+           <div class="g-signin2" data-width="400" data-height="100" data-longtitle="true" onClick = "this.style.visibility='hidden';" data-onsuccess="onSignIn"></div>
         <div class="col-12 data">
             <div class="row">
                 <div class="col-md-3"></div>

@@ -5,6 +5,11 @@ function onSignIn(googleUser) {
     $(".data").css("display", "block");
     var inputF = document.getElementById("playerName");
     inputF.value = name; 
+    var provider = new firebase.auth.GoogleAuthProvider();
+    firebase.auth().signInWithPopup(provider).then(function(result) {
+      }).catch(function(error) {
+        
+      });
 }
 
 function validate() {
