@@ -1,6 +1,8 @@
+var check =0;
+var count =0;
 module.exports = {
     dice: function () {
-        return Math.floor(Math.random() * 6) + 1
+        return Math.floor(Math.random() * 6) + 1;
     },
 
     gameLogic: function (game, playerId, pos, chipsToMove, moveChipsIn) {
@@ -386,7 +388,15 @@ function nextPlayer(game) {
 }
 
 function dice() {
-    return Math.floor(Math.random() * 6) + 1
+    if (check == 2) {
+        count = Math.floor(Math.random() * 5) + 1;
+        check=0;
+        return count;
+    }
+    count = Math.floor(Math.random() * 6 ) + 1;
+    if (count == 6)
+        check++;
+    return count;
 }
 
 function recalcSumDistance(game, playerIndex) {

@@ -435,23 +435,26 @@ $(document).ready(function () {
                 if (chipsIn > 0 && chipsIn !== chipsOn) {
 
                     for (let i = 0; i < chipsIn; i++) {
-                        content += "<button onclick='gameLogic(" + $(this).data("pos") + ', ' + (i + 1) + ", true); removePopover();' style='width:120px; padding-left: 0px'>Move " + (i + 1) + " chip in</botton><br>";
+                        gameLogic($(this).data("pos"),(i + 1));
+                        // content += "<button onclick='gameLogic(" + $(this).data("pos") + ', ' + (i + 1) + ", true); removePopover();' style='width:120px; padding-left: 0px'>Move " + (i + 1) + " chip in</botton><br>";
                     }
 
                     for (let i = 0; i < chipsOn - chipsIn; i++) {
-                        content += "<button onclick='gameLogic(" + $(this).data("pos") + ', ' + (i + 1) + ", false); removePopover();' style='width:120px'>Move " + (i + 1) + " chip out</botton>" + ((i < chipsOn) ? "<br>" : "");
+                        gameLogic($(this).data("pos"),(i + 1));
+                        // content += "<button onclick='gameLogic(" + $(this).data("pos") + ', ' + (i + 1) + ", false); removePopover();' style='width:120px'>Move " + (i + 1) + " chip out</botton>" + ((i < chipsOn) ? "<br>" : "");
                     }
 
                 } else {
 
                     for (let i = 0; i < chipsOn; i++) {
-                        content += "<button onclick='gameLogic(" + $(this).data("pos") + ', ' + (i + 1) + "); removePopover();' style='width:100px'>Move " + (i + 1) + " chip</botton>" + ((i < chipsOn) ? "<br>" : "");
+                        gameLogic($(this).data("pos"),(i + 1));
+                        // content += "<button onclick='gameLogic(" + $(this).data("pos") + ', ' + (i + 1) + "); removePopover();' style='width:100px'>Move " + (i + 1) + " chip</botton>" + ((i < chipsOn) ? "<br>" : "");
                     }
 
                 }
 
                 removePopover();
-                $("<div class='active-popover contain-over' style='position: relative; z-index: 2; margin-top: -50px;'></div>").appendTo(this);
+                 $("<div class='active-popover contain-over' style='position: relative; z-index: 2; margin-top: -50px;'></div>").appendTo(this);
                 $(".active-popover").popover({
                     placement: 'right',
                     container: $(".active-popover"),
