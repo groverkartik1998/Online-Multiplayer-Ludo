@@ -1,5 +1,5 @@
 var isPlayer = 0;
-
+document.getElementById('num').innerHTML = number;
 var game = null,
     socket = io(window.location.host, {path: baseUrl + 'socket.io'});
 ;
@@ -75,8 +75,9 @@ function updateGame(cb) {
 }
 
 function getChipSVG(chips, color) {
+    // document.getElementById('number').innerHTML = number;
     let chip = [];
-    chip[0] = "<svg width='100%' height='100%' viewBox='0 0 250 250'> <circle cx='125' cy='125' r='80' stroke='black' stroke-width='6' fill=? /> <circle cx='125' cy='105' r='80' stroke='black' stroke-width='6' fill=? /> <text x='50%' y='50%' text-anchor='middle' fill='white' font-size='80px' stroke-width='2px' dy='.3em'>1</text></svg>";
+    chip[0] = "<svg width='100%' height='100%' viewBox='0 0 250 250'> <circle cx='125' cy='125' r='80' stroke='black' stroke-width='6' fill=? /> <circle cx='125' cy='105' r='80' stroke='black' stroke-width='6' fill=? /> <text x='50%' y='50%' text-anchor='middle' fill='white' font-size='80px' stroke-width='2px' dy='.3em'> </text></svg>";
     chip[1] = "<svg width='100%' height='100%' viewBox='0 0 250 250'> <circle cx='125' cy='135' r='80' stroke='black' stroke-width='6' fill=? /> <circle cx='125' cy='115' r='80' stroke='black' stroke-width='6' fill=? /> <circle cx='125' cy='95' r='80' stroke='black' stroke-width='6' fill=? /> <text x='50%' y='50%' text-anchor='middle' fill='white' font-size='80px' stroke-width='2px' dy='.3em'>2</text></svg>";
     chip[2] = "<svg width='100%' height='100%' viewBox='0 0 250 250'> <circle cx='125' cy='155' r='80' stroke='black' stroke-width='6' fill=? /> <circle cx='125' cy='135' r='80' stroke='black' stroke-width='6' fill=? /> <circle cx='125' cy='115' r='80' stroke='black' stroke-width='6' fill=? /><circle cx='125' cy='95' r='80' stroke='black' stroke-width='6' fill=? /><text x='50%' y='50%' text-anchor='middle' fill='white' font-size='80px' stroke-width='2px' dy='.3em'>3</text></svg>";
     chip[3] = "<svg width='100%' height='100%' viewBox='0 0 250 250'> <circle cx='125' cy='167' r='80' stroke='black' stroke-width='6' fill=? /> <circle cx='125' cy='147' r='80' stroke='black' stroke-width='6' fill=? /> <circle cx='125' cy='127' r='80' stroke='black' stroke-width='6' fill=? /> <circle cx='125' cy='107' r='80' stroke='black' stroke-width='6' fill=? /> <circle cx='125' cy='87' r='80' stroke='black' stroke-width='6' fill=? /> <text x='50%' y='50%' text-anchor='middle' fill='white' font-size='80px' stroke-width='2px' dy='.3em'>4</text></svg>";
@@ -435,20 +436,20 @@ $(document).ready(function () {
                 if (chipsIn > 0 && chipsIn !== chipsOn) {
 
                     for (let i = 0; i < chipsIn; i++) {
-                        // gameLogic($(this).data("pos"),(i + 1));
-                        content += "<button onkeydown='gameLogic(" + $(this).data("pos") + ', ' + (i + 1) + ", true); removePopover();' style='width:120px; padding-left: 0px'>Move " + (i + 1) + " chip in</botton><br>";
+                        gameLogic($(this).data("pos"),(i + 1));
+                        // content += "<button onclick='gameLogic(" + $(this).data("pos") + ', ' + (i + 1) + ", true); removePopover();' style='width:120px; padding-left: 0px'>Move " + (i + 1) + " chip in</botton><br>";
                     }
 
                     for (let i = 0; i < chipsOn - chipsIn; i++) {
-                        // gameLogic($(this).data("pos"),(i + 1));
-                        content += "<button onkeydown='gameLogic(" + $(this).data("pos") + ', ' + (i + 1) + ", false); removePopover();' style='width:120px'>Move " + (i + 1) + " chip out</botton>" + ((i < chipsOn) ? "<br>" : "");
+                        gameLogic($(this).data("pos"),(i + 1));
+                        // content += "<button onclick='gameLogic(" + $(this).data("pos") + ', ' + (i + 1) + ", false); removePopover();' style='width:120px'>Move " + (i + 1) + " chip out</botton>" + ((i < chipsOn) ? "<br>" : "");
                     }
 
                 } else {
 
                     for (let i = 0; i < chipsOn; i++) {
-                        // gameLogic($(this).data("pos"),(i + 1));
-                        content += "<button onkeydown='gameLogic(" + $(this).data("pos") + ', ' + (i + 1) + "); removePopover();' style='width:100px'>Move " + (i + 1) + " chip</botton>" + ((i < chipsOn) ? "<br>" : "");
+                        gameLogic($(this).data("pos"),(i + 1));
+                        // content += "<button onclick='gameLogic(" + $(this).data("pos") + ', ' + (i + 1) + "); removePopover();' style='width:100px'>Move " + (i + 1) + " chip</botton>" + ((i < chipsOn) ? "<br>" : "");
                     }
 
                 }
