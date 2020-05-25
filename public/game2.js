@@ -1,5 +1,4 @@
 var isPlayer = 0;
-document.getElementById('num').innerHTML = number;
 var game = null,
     socket = io(window.location.host, {path: baseUrl + 'socket.io'});
 ;
@@ -77,7 +76,7 @@ function updateGame(cb) {
 function getChipSVG(chips, color) {
     // document.getElementById('number').innerHTML = number;
     let chip = [];
-    chip[0] = "<svg width='100%' height='100%' viewBox='0 0 250 250'> <circle cx='125' cy='125' r='80' stroke='black' stroke-width='6' fill=? /> <circle cx='125' cy='105' r='80' stroke='black' stroke-width='6' fill=? /> <text x='50%' y='50%' text-anchor='middle' fill='white' font-size='80px' stroke-width='2px' dy='.3em'> </text></svg>";
+    chip[0] = "<svg width='100%' height='100%' viewBox='0 0 250 250'> <circle cx='125' cy='125' r='80' stroke='black' stroke-width='6' fill=? /> <circle cx='125' cy='105' r='80' stroke='black' stroke-width='6' fill=? /> <text x='50%' y='50%' text-anchor='middle' fill='white' font-size='80px' stroke-width='2px' dy='.3em'></text></svg>";
     chip[1] = "<svg width='100%' height='100%' viewBox='0 0 250 250'> <circle cx='125' cy='135' r='80' stroke='black' stroke-width='6' fill=? /> <circle cx='125' cy='115' r='80' stroke='black' stroke-width='6' fill=? /> <circle cx='125' cy='95' r='80' stroke='black' stroke-width='6' fill=? /> <text x='50%' y='50%' text-anchor='middle' fill='white' font-size='80px' stroke-width='2px' dy='.3em'>2</text></svg>";
     chip[2] = "<svg width='100%' height='100%' viewBox='0 0 250 250'> <circle cx='125' cy='155' r='80' stroke='black' stroke-width='6' fill=? /> <circle cx='125' cy='135' r='80' stroke='black' stroke-width='6' fill=? /> <circle cx='125' cy='115' r='80' stroke='black' stroke-width='6' fill=? /><circle cx='125' cy='95' r='80' stroke='black' stroke-width='6' fill=? /><text x='50%' y='50%' text-anchor='middle' fill='white' font-size='80px' stroke-width='2px' dy='.3em'>3</text></svg>";
     chip[3] = "<svg width='100%' height='100%' viewBox='0 0 250 250'> <circle cx='125' cy='167' r='80' stroke='black' stroke-width='6' fill=? /> <circle cx='125' cy='147' r='80' stroke='black' stroke-width='6' fill=? /> <circle cx='125' cy='127' r='80' stroke='black' stroke-width='6' fill=? /> <circle cx='125' cy='107' r='80' stroke='black' stroke-width='6' fill=? /> <circle cx='125' cy='87' r='80' stroke='black' stroke-width='6' fill=? /> <text x='50%' y='50%' text-anchor='middle' fill='white' font-size='80px' stroke-width='2px' dy='.3em'>4</text></svg>";
@@ -118,7 +117,7 @@ function gameLogic(pos, chipsToMove, moveChipsIn) {
         error: function (jqXHR, textStatus, errorThrown) {
         },
 
-        timeout: 120000,
+        timeout: 100000,
     });
 }
 
@@ -139,7 +138,7 @@ function sendChatMessage(chatmessage) {
         error: function (jqXHR, textStatus, errorThrown) {
         },
 
-        timeout: 120000,
+        timeout: 100000,
     });
 }
 
@@ -160,12 +159,49 @@ function giveUp() {
         error: function (jqXHR, textStatus, errorThrown) {
         },
 
-        timeout: 120000,
+        timeout: 100000,
     });
 }
 
 
 function draw() {
+
+    if (game.playerTurn === 0) {
+        setTimeout(function(){ 
+            $("rect").removeClass("dice_yellow");
+            $("rect").removeClass("dice_green");
+            $("rect").removeClass("dice_blue");
+            $("rect").addClass("dice_red");
+         }, 2000);
+        
+    }
+    else if (game.playerTurn === 1) {
+        setTimeout(function(){ 
+            $("rect").removeClass("dice_red");
+            $("rect").removeClass("dice_green");
+            $("rect").removeClass("dice_blue");
+            $("rect").addClass("dice_yellow");
+         }, 2000);
+    }
+    else if (game.playerTurn === 2) {
+        setTimeout(function(){ 
+            $("rect").removeClass("dice_yellow");
+            $("rect").removeClass("dice_red");
+            $("rect").removeClass("dice_blue");
+            $("rect").addClass("dice_green");
+         }, 2000);
+    }
+    else if (game.playerTurn === 3) {
+        setTimeout(function(){ 
+            $("rect").removeClass("dice_green");
+            $("rect").removeClass("dice_red");
+            $("rect").removeClass("dice_blue");
+            $("rect").addClass("dice_blue");
+         }, 2000);
+        
+    }
+    
+        console.log(game.playerTurn);
 
     updateLeaveBtn();
     //chatlog
@@ -200,9 +236,9 @@ function draw() {
             prevPossible.push(game.posiblePos[i]);
             prevPossibleNext.push(game.posiblePosDest[i]);
             $("#pos-" + game.posiblePos[i]).on({
-                mouseenter: function () {
-                    $("#pos-" + game.posiblePosDest[i]).addClass("possiblePosNext");
-                },
+                // mouseenter: function () {
+                //     $("#pos-" + game.posiblePosDest[i]).addClass("possiblePosNext");
+                // },
                 mouseleave: function () {
                     $("#pos-" + game.posiblePosDest[i]).removeClass("possiblePosNext");
                 }
@@ -217,8 +253,8 @@ function draw() {
 
     drawDice(game.lastDice, 350);
 
-    if (!game.waitingForMove && game.status == 1 && isTurn()) $("#pos-92").addClass("possiblePos");
-    else $("#pos-92").removeClass("possiblePos");
+    // if (!game.waitingForMove && game.status == 1 && isTurn()) $("#pos-92").addClass("possiblePos");
+    $("#pos-92").removeClass("possiblePos");
 
     for (var i = 0; i < 4; i++) {
         if (game.players[i] == null) {
@@ -226,8 +262,8 @@ function draw() {
         } else {
             $("#playerText-" + i).html(game.players[i].playerName + ((game.players[i].turnsIdle === game.idleKickTurns)
                 ? " (Left)" : ((game.players[i].turnsIdle > 0) ? " Idle(" + game.players[i].turnsIdle + ")" : "")));
-            if (game.playerTurn == i && game.status == 1) $("#playerText-" + i).addClass("possiblePos");
-            else $("#playerText-" + i).removeClass("possiblePos");
+            // if (game.playerTurn == i && game.status == 1) $("#playerText-" + i).addClass("possiblePos");
+            // else $("#playerText-" + i).removeClass("possiblePos");
         }
     }
 
@@ -359,7 +395,7 @@ function validateToken(next) {
         success: function (resultData) {
             next(resultData.valid);
         },
-        timeout: 120000,
+        timeout: 100000,
     });
 }
 

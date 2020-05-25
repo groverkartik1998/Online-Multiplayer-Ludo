@@ -34,7 +34,7 @@ gameJS.setSocket(io);
 gameJS.setPlayerAuth(playerAuth);
 
 var defaultGameSettings = {
-    idleTimeout: 20000,
+    idleTimeout: 18000,
     idleKickTurns: 4,
     idleKickTurnsTotal: 7,
     boardSize: 4

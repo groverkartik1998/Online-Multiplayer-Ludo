@@ -23,6 +23,8 @@
     font-weight: bold;
 }
 
+
+
 .border {
     box-sizing: border-box;
     border: 1px solid black;
@@ -122,10 +124,10 @@
 }
 
 .possiblePos {
-    -webkit-animation: ANIMATION-POSIBLE 1s infinite; /* Safari 4+ */
-    -moz-animation: ANIMATION-POSIBLE 1s infinite; /* Fx 5+ */
-    -o-animation: ANIMATION-POSIBLE 1s infinite; /* Opera 12+ */
-    animation: ANIMATION-POSIBLE 1s infinite; /* IE 10+, Fx 29+ */
+    -webkit-animation: ANIMATION-POSIBLE 1s infinite; 
+    -moz-animation: ANIMATION-POSIBLE 1s infinite; 
+    -o-animation: ANIMATION-POSIBLE 1s infinite; 
+    animation: ANIMATION-POSIBLE 1s infinite; 
 }
 
 @-webkit-keyframes ANIMATION-POSIBLE {
@@ -137,10 +139,10 @@
 }
 
 .possiblePosNext {
-    -webkit-animation: ANIMATION-POSIBLE-NEXT 1s infinite; /* Safari 4+ */
-    -moz-animation: ANIMATION-POSIBLE-NEXT 1s infinite; /* Fx 5+ */
-    -o-animation: ANIMATION-POSIBLE-NEXT 1s infinite; /* Opera 12+ */
-    animation: ANIMATION-POSIBLE-NEXT 1s infinite; /* IE 10+, Fx 29+ */
+    -webkit-animation: ANIMATION-POSIBLE-NEXT 1s infinite; 
+    -moz-animation: ANIMATION-POSIBLE-NEXT 1s infinite; 
+    -o-animation: ANIMATION-POSIBLE-NEXT 1s infinite; 
+    animation: ANIMATION-POSIBLE-NEXT 1s infinite; 
 }
 
 @-webkit-keyframes ANIMATION-POSIBLE-NEXT {
@@ -213,6 +215,22 @@ body {
 
 #logoutBtn {
     float: right;
+}
+
+.dice_red {
+    fill: red;
+}
+
+.dice_yellow {
+    fill: yellow;
+}
+
+.dice_green {
+    fill: green;
+}
+
+.dice_blue {
+    fill: blue;
 }
 
 .chatMessage {

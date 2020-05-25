@@ -30,7 +30,7 @@ function validate() {
         error: function (jqXHR, textStatus, errorThrown) {
         },
 
-        timeout: 120000,
+        timeout: 100000,
     });
 
     if ($("#playerName").val().length > 16) newText = "Name max length is 16 charaters.";
@@ -58,7 +58,7 @@ function submit() {
         error: function (jqXHR, textStatus, errorThrown) {
         },
 
-        timeout: 120000,
+        timeout: 100000,
     });
 }
 
@@ -71,7 +71,7 @@ function validateToken(next) {
         success: function (resultData) {
             next(resultData.valid);
         },
-        timeout: 120000,
+        timeout: 100000,
     });
 }
 
