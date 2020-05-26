@@ -86,11 +86,11 @@ function getChipSVG(chips, color) {
 function getTimeLeftSVG() {
     if (game === null)
         return "<svg viewBox='0 0 500 100'>" +
-            "<polygon points='0,0 0,100 500,100 500,0' style='fill:black;stroke:black;stroke-width:2' />" +
+            "<polygon points='0,0 0,100 500,100 500,0' style='fill:MediumSeaGreen;stroke:black;stroke-width:2' />" +
             "</svg>"
     var mult = game.timeLeftTurn * 1000 / game.idleTimeout;
     return "<svg viewBox='0 0 500 100'>" +
-        "<polygon points='0,0 0,100 " + mult * 500 + ",100 " + mult * 500 + ",0' style='fill:black;stroke:black;stroke-width:2' />" +
+        "<polygon points='0,0 0,100 " + mult * 500 + ",100 " + mult * 500 + ",0' style='fill:MediumSeaGreen;stroke:black;stroke-width:2' />" +
         "</svg>"
 }
 
@@ -172,7 +172,7 @@ function draw() {
             $("rect").removeClass("dice_green");
             $("rect").removeClass("dice_blue");
             $("rect").addClass("dice_red");
-         }, 2000);
+         }, 800);
         
     }
     else if (game.playerTurn === 1) {
@@ -181,7 +181,7 @@ function draw() {
             $("rect").removeClass("dice_green");
             $("rect").removeClass("dice_blue");
             $("rect").addClass("dice_yellow");
-         }, 2000);
+         }, 800);
     }
     else if (game.playerTurn === 2) {
         setTimeout(function(){ 
@@ -189,7 +189,7 @@ function draw() {
             $("rect").removeClass("dice_red");
             $("rect").removeClass("dice_blue");
             $("rect").addClass("dice_green");
-         }, 2000);
+         }, 800);
     }
     else if (game.playerTurn === 3) {
         setTimeout(function(){ 
@@ -197,7 +197,7 @@ function draw() {
             $("rect").removeClass("dice_red");
             $("rect").removeClass("dice_blue");
             $("rect").addClass("dice_blue");
-         }, 2000);
+         }, 800);
         
     }
     

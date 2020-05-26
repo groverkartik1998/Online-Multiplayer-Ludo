@@ -239,7 +239,7 @@ function checkWin(game) {
 
             if (!hasWon && game.players[j].status !== 1) {
                 game.players[game.playerTurn].status = 2;
-                // game.winners.push(j);
+                game.winners.push(j);
             }
         }
 
