@@ -162,10 +162,11 @@ function signOut() {
     auth2.signOut().then(function () {
       console.log('User signed out.');
     });
+    auth2.disconnect();
 }
 
 function logOut() {
-    // signOut();
+    signOut();
     localStorage.token = undefined;
     window.location.href = baseUrl;
 }
